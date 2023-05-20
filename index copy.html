@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema Operativo</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <style>
+    .background-image {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      filter: blur(8px);
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .user-image {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .wifi-icon,
+    .battery-icon {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Pantalla de carga -->
+  <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <div class="spinner-border text-primary" role="status">
+      <span class="sr-only">Cargando...</span>
+    </div>
+  </div>
+
+  <!-- Página de inicio de sesión -->
+  <div class="container-fluid content">
+    <img src="imgs/imagen.png" class="background-image" alt="Fondo de pantalla con blur">
+    <div class="row justify-content-center align-items-center" style="height: 100vh;">
+      <div class="col-md-4 text-center">
+        <img src="imgs/user-image.png" class="user-image mb-4" alt="Imagen de usuario">
+        <h2>Nombre de Usuario</h2>
+        <form>
+          <div class="form-group mt-4">
+            <label for="password">Contraseña</label>
+            <input type="password" class="form-control" id="password" placeholder="Ingrese su contraseña">
+          </div>
+          <button type="submit" class="btn btn-primary mt-3">Iniciar sesión</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Iconos de wifi y batería -->
+  <div class="wifi-icon">
+    <i class="fas fa-wifi"></i>
+  </div>
+  <div class="battery-icon">
+    <i class="fas fa-battery-full"></i>
+  </div>
+
+  <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>
