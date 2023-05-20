@@ -138,7 +138,7 @@
       color: #fff;
       font-size: 12px;
     }
-    .interruptions{
+    .interruptions, .schedulling{
       display: flex;
       flex-wrap: wrap;
     }
@@ -149,6 +149,16 @@
     }
     .btn.btn-light.interruption-button:hover{
       background-color: #000;
+      color: #fff;
+    }
+    .btn.btn-light.sched{
+      border-color: #008deb2d;
+      border-style: solid;
+      margin: 5px;
+      background-color: #5200eb67;
+    }
+    .btn.btn-light.sched:hover{
+      background-color: rgb(51, 0, 85);
       color: #fff;
     }
   </style>
@@ -220,8 +230,14 @@
           <!-- Agregar botón para agregar un nuevo proceso -->
           <button id="add-process-btn" class="btn btn-primary">Agregar Proceso</button>
           <!-- Agregar botones para los algoritmos de scheduling -->
-          <div class="btn-group">
-            <button type="button" class="btn btn-light" id="fcfs-button">FCFS</button>
+          <div class="btn-group schedulling">
+            <button type="button" class="btn btn-light sched" id="fcfs-button">FCFS</button>
+            <button type="button" class="btn btn-light sched" id="fifo-button">FIFO</button>
+            <button type="button" class="btn btn-light sched" id="round-robin-button">Round Robin</button>
+            <button type="button" class="btn btn-light sched" id="sjf-button">SJF</button>
+            <button type="button" class="btn btn-light sched" id="srt-button">SRT</button>
+            <button type="button" class="btn btn-light sched" id="hrrn-button">HRRN</button>
+            <button type="button" class="btn btn-light sched" id="mlfq-button">MLFQ</button>
           </div>
 
           <!-- Agregar botones para las interrupciones -->
