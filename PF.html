@@ -6,188 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <!--estilos propios-->
+  <link rel="stylesheet" href="css/estilos.css" />
   <link rel="icon" href="windows_logo.png" type="image/png">
-  <style>
-    body {
-      background: url("windows_background.jpeg") no-repeat center center fixed;
-      background-size: cover;
-    }
-
-    .window-title-bar {
-      background-color: #007bff;
-      display: flex;
-      align-items: center;
-      height: 30px;
-      padding: 0 10px;
-      color: #fff;
-      font-weight: bold;
-      margin: 0px 100px 0px 100px;
-    }
-
-    .window-title {
-      flex-grow: 1;
-    }
-
-    .window-control-btn {
-      width: 20px;
-      height: 20px;
-      margin-right: 5px;
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-color: transparent;
-      border: none;
-      cursor: pointer;
-      outline: none;
-    }
-
-    .window-control-btn:hover {
-      background-color: rgba(5, 37, 71, 0.815);
-    }
-
-    .window-control-btn.minimize {
-      background-image: url("minimize.png");
-    }
-
-    .window-control-btn.maximize {
-      background-image: url("maximize.png");
-    }
-
-    .window-control-btn.close {
-      background-image: url("exit.png");
-    }
-
-    .window-content {
-      background-color: #fff;
-      padding: 20px;
-      border: 1px solid #ccc;
-
-      margin: 0px 100px 0px 100px;
-    }
-
-    .taskbar {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 48px;
-      background-color: #000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .start-button {
-      width: 30px;
-      height: 30px;
-      background-image: url("windows_logo.png");
-      background-repeat: no-repeat;
-      background-size: contain;
-      cursor: pointer;
-      margin-right: 10px;
-    }
-
-    .taskbar-icons {
-      display: flex;
-      align-items: center;
-      margin: 10px;
-    }
-
-    .taskbar-icon {
-      width: 30px;
-      height: 30px;
-      background-repeat: no-repeat;
-      background-size: contain;
-      cursor: pointer;
-      margin: 0 5px;
-    }
-
-    .taskbar-icon.archivos {
-      background-image: url("archivos.png");
-    }
-
-    .taskbar-icon.store {
-      background-image: url("icon.png");
-    }
-
-    .taskbar-icon.task-manager {
-      background-image: url("task-manager.png");
-      background-color: #ffffff57;
-      border-radius: 4px;
-    }
-
-    /* Estilos adicionales para los menús desplegables */
-    .dropdown-menu {
-      position: absolute;
-      z-index: 9999;
-      top: 100%;
-      left: 0;
-    }
-
-    .clock {
-      position: absolute;
-      top: 0;
-      right: 10px;
-      color: #fff;
-      font-weight: bold;
-      font-size: 14px;
-    }
-
-    .date {
-      position: absolute;
-      top: 20px;
-      right: 10px;
-      color: #fff;
-      font-size: 12px;
-    }
-
-    .interruptions,
-    .schedulling,
-    .paginacion {
-      display: flex;
-      flex-wrap: wrap;
-    }
-
-    .btn.btn-light.interruption-button {
-      border-color: #000;
-      border-style: solid;
-      margin: 5px;
-    }
-
-    .btn.btn-light.interruption-button:hover {
-      background-color: #000;
-      color: #fff;
-    }
-
-    .btn.btn-light.sched {
-      border-color: #008deb2d;
-      border-style: solid;
-      margin: 5px;
-      background-color: #5200eb67;
-    }
-
-    .btn.btn-light.sched:hover {
-      background-color: rgb(51, 0, 85);
-      color: #fff;
-    }
-
-    .btn.btn-light.pag {
-      border-color: #0d694a9a;
-      border-style: solid;
-      margin: 5px;
-      background-color: #058d559f;
-    }
-
-    .btn.btn-light.pag:hover {
-      background-color: rgba(1, 32, 5, 0.74);
-      color: #fff;
-    }
-  </style>
   <title>Windows</title>
 </head>
 
 <body>
   <div class="container-fluid">
-    <br /><br />
+    <br />
     <div class="row">
       <div class="col-12">
         <div class="window-title-bar">
@@ -267,31 +94,6 @@
             <button type="button" class="btn btn-light sched" id="hrrn-button">HRRN</button>
             <button type="button" class="btn btn-light sched" id="mlfq-button">MLFQ</button>
           </div>
-          <!--Contador-->
-          <script>
-            // Contador (cronómetro)
-            var timerElement = document.getElementById('timer');
-            var seconds = 0;
-            var interval;
-
-            function startTimer() {
-              interval = setInterval(updateTimer, 1000);
-            }
-
-            function stopTimer() {
-              clearInterval(interval);
-            }
-
-            function updateTimer() {
-              seconds++;
-              timerElement.textContent = seconds;
-            }
-
-            // Iniciar el contador cuando se carga la página
-            document.addEventListener('DOMContentLoaded', function () {
-              startTimer();
-            });
-          </script>
           <!-- Agregar botones para los algoritmos de paginación -->
           <div class="d-flex justify-content-center align-items-center" style="margin-top: 20px">
             <p class="text-center">Algoritmo de Paginaci&oacute;n</p>
@@ -318,188 +120,137 @@
             <button type="button" class="btn btn-light interruption-button" id="abrupt-termination-button">Terminación
               abrupta</button>
           </div>
-
-          <hr />
-
-          <!-- Contenedor para mostrar la tabla de procesos -->
-          <div id="process-table"></div>
         </div>
       </div>
     </div>
-    <div class="taskbar">
-      <div class="start-button"></div>
-      <div class="taskbar-icons">
-        <div class="taskbar-icon archivos"></div>
-        <div class="taskbar-icon store"></div>
-        <div class="taskbar-icon task-manager"></div>
-        <div class="clock" id="clock"></div>
-        <div class="date" id="date"></div>
+  </div>
+  <br><br>
+  <div style="background: transparent;">dsfsdfs</div>
+  <div class="taskbar">
+    <div class="start-button"></div>
+    <div class="taskbar-icons">
+      <div class="taskbar-icon archivos"></div>
+      <div class="taskbar-icon store"></div>
+      <div class="taskbar-icon task-manager"></div>
+      <div class="icons-battery">
+        <div class="wifi-icon"></div>
+        <div class="sound-icon"></div>
+        <div class="battery-icon" id="battery-icon"></div>
       </div>
+      <div class="clock" id="clock"></div>
+      <div class="date" id="date"></div>
     </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+  <!--Codigo para cerrar menu desplegable si esta abierto-->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="js/FCFS.js"></script>
+  <!-- Incluir los archivos JavaScript para los demás algoritmos -->
+  <script src="js/FIFO.js"></script>
+  <script src="js/RoundRobin.js"></script>
+  <script src="js/SJF.js"></script>
+  <script src="js/SRT.js"></script>
+  <script src="js/HRRN.js"></script>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
-    <!--Codigo para cerrar menu desplegable si esta abierto-->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-      // Cierra los menús desplegables si están abiertos
-      $(document).on('click', function (e) {
-        $('.dropdown-menu').removeClass('show');
-      });
+  <script src="js/MLFQ.js"></script>
+  <script src="js/LRU.js"></script>
+  <script src="js/Interruptions.js"></script>
+  <script src="js/scripts.js"></script>
+  <script>
+    // Obtener referencia a los botones de algoritmos de scheduling
+    const fcfsButton = document.getElementById('fcfs-button');
+    const fifoButton = document.getElementById('fifo-button');
+    const roundRobinButton = document.getElementById('round-robin-button');
+    const sjfButton = document.getElementById('sjf-button');
+    const srtButton = document.getElementById('srt-button');
+    const hrrnButton = document.getElementById('hrrn-button');
+    const mlfqButton = document.getElementById('mlfq-button');
 
-      // Evita el cierre del menú si se hace clic dentro del menú mismo
-      $('.dropdown-toggle').on('click', function (e) {
-        e.stopPropagation();
-      });
-    </script>
-    <!--Quitar opciones si se necesita-->
-    <script>
-      $(document).ready(function () {
-        $(".dropdown-toggle").on("click", function () {
-          var target = $(this).next(".dropdown-menu");
-          $(".dropdown-menu").not(target).removeClass("show");
-          target.toggleClass("show");
-        });
-      });
-    </script>
-    <!--Reloj-->
-    <script>
-      // Función para formatear números menores a 10 con un cero al inicio
-      function formatNumber(number) {
-        return number < 10 ? "0" + number : number;
-      }
+    // Obtener referencia al botón de algoritmo de paginación
+    const lruButton = document.getElementById('lru-button');
 
-      // Función para obtener la hora actual y actualizar el reloj
-      function updateClock() {
-        var now = new Date();
-        var hours = formatNumber(now.getHours());
-        var minutes = formatNumber(now.getMinutes());
-        var ampm = hours >= 12 ? "p.m." : "a.m.";
+    // Obtener referencia a los botones de interrupciones
+    const ioInterruptButton = document.getElementById('io-interrupt-button');
+    const normalTerminationButton = document.getElementById('normal-termination-button');
+    const programErrorButton = document.getElementById('program-error-button');
+    const quantumExpiredButton = document.getElementById('quantum-expired-button');
+    const zombieInterruptButton = document.getElementById('zombie-interrupt-button');
+    const abruptTerminationButton = document.getElementById('abrupt-termination-button');
 
-        document.getElementById("clock").textContent = hours + ":" + minutes + " " + ampm;
+    // Asociar eventos de clic a los botones de algoritmos de scheduling
+    fcfsButton.addEventListener('click', () => {
+      // Ejecutar el algoritmo FCFS
+      executeFCFS();
+    });
 
-        setTimeout(updateClock, 1000); // Actualizar cada segundo
-      }
+    fifoButton.addEventListener('click', () => {
+      // Ejecutar el algoritmo FIFO
+      executeFIFO();
+    });
 
-      // Función para obtener la fecha actual y actualizarla
-      function updateDate() {
-        var now = new Date();
-        var options = { weekday: "long", year: "numeric", month: "long", day: "numeric" };
-        var dateStr = now.toLocaleDateString("en-US", options);
+    roundRobinButton.addEventListener('click', () => {
+      // Ejecutar el algoritmo Round Robin
+      executeRoundRobin();
+    });
 
-        document.getElementById("date").textContent = dateStr;
-      }
+    sjfButton.addEventListener('click', () => {
+      // Ejecutar el algoritmo SJF
+      executeSJF();
+    });
 
-      // Iniciar la actualización del reloj y la fecha al cargar la página
-      $(document).ready(function () {
-        updateClock();
-        updateDate();
-      });
-    </script>
-    <script src="js/FCFS.js"></script>
-    <!-- Incluir los archivos JavaScript para los demás algoritmos -->
-    <script src="js/FIFO.js"></script>
-    <script src="js/RoundRobin.js"></script>
-    <script src="js/SJF.js"></script>
-    <script src="js/SRT.js"></script>
-    <script src="js/HRRN.js"></script>
+    srtButton.addEventListener('click', () => {
+      // Ejecutar el algoritmo SRT
+      executeSRT();
+    });
 
-    <script src="js/MLFQ.js"></script>
-    <script src="js/LRU.js"></script>
-    <script>
-      // Obtener referencia a los botones de algoritmos de scheduling
-      const fcfsButton = document.getElementById('fcfs-button');
-      const fifoButton = document.getElementById('fifo-button');
-      const roundRobinButton = document.getElementById('round-robin-button');
-      const sjfButton = document.getElementById('sjf-button');
-      const srtButton = document.getElementById('srt-button');
-      const hrrnButton = document.getElementById('hrrn-button');
-      const mlfqButton = document.getElementById('mlfq-button');
+    hrrnButton.addEventListener('click', () => {
+      // Ejecutar el algoritmo HRRN
+      executeHRRN();
+    });
 
-      // Obtener referencia al botón de algoritmo de paginación
-      const lruButton = document.getElementById('lru-button');
+    mlfqButton.addEventListener('click', () => {
+      // Ejecutar el algoritmo MLFQ
+      executeMLFQ();
+    });
 
-      // Obtener referencia a los botones de interrupciones
-      const ioInterruptButton = document.getElementById('io-interrupt-button');
-      const normalTerminationButton = document.getElementById('normal-termination-button');
-      const programErrorButton = document.getElementById('program-error-button');
-      const quantumExpiredButton = document.getElementById('quantum-expired-button');
-      const zombieInterruptButton = document.getElementById('zombie-interrupt-button');
-      const abruptTerminationButton = document.getElementById('abrupt-termination-button');
+    // Asociar evento de clic al botón de algoritmo de paginación
+    lruButton.addEventListener('click', () => {
+      // Ejecutar el algoritmo LRU
+      executeLRU();
+    });
 
-      // Asociar eventos de clic a los botones de algoritmos de scheduling
-      fcfsButton.addEventListener('click', () => {
-        // Ejecutar el algoritmo FCFS
-        executeFCFS();
-      });
+    // Asociar eventos de clic a los botones de interrupciones
+    ioInterruptButton.addEventListener('click', () => {
+      // Simular una interrupción de E/S
+      simulateIOInterrupt();
+    });
 
-      fifoButton.addEventListener('click', () => {
-        // Ejecutar el algoritmo FIFO
-        executeFIFO();
-      });
+    normalTerminationButton.addEventListener('click', () => {
+      // Simular una terminación normal
+      simulateNormalTermination();
+    });
 
-      roundRobinButton.addEventListener('click', () => {
-        // Ejecutar el algoritmo Round Robin
-        executeRoundRobin();
-      });
+    programErrorButton.addEventListener('click', () => {
+      // Simular un error de programa
+      simulateProgramError();
+    });
 
-      sjfButton.addEventListener('click', () => {
-        // Ejecutar el algoritmo SJF
-        executeSJF();
-      });
+    quantumExpiredButton.addEventListener('click', () => {
+      // Simular la expiración de un quantum
+      simulateQuantumExpired();
+    });
 
-      srtButton.addEventListener('click', () => {
-        // Ejecutar el algoritmo SRT
-        executeSRT();
-      });
+    zombieInterruptButton.addEventListener('click', () => {
+      // Simular una interrupción zombie
+      simulateZombieInterrupt();
+    });
 
-      hrrnButton.addEventListener('click', () => {
-        // Ejecutar el algoritmo HRRN
-        executeHRRN();
-      });
-
-      mlfqButton.addEventListener('click', () => {
-        // Ejecutar el algoritmo MLFQ
-        executeMLFQ();
-      });
-
-      // Asociar evento de clic al botón de algoritmo de paginación
-      lruButton.addEventListener('click', () => {
-        // Ejecutar el algoritmo LRU
-        executeLRU();
-      });
-
-      // Asociar eventos de clic a los botones de interrupciones
-      ioInterruptButton.addEventListener('click', () => {
-        // Simular una interrupción de E/S
-        simulateIOInterrupt();
-      });
-
-      normalTerminationButton.addEventListener('click', () => {
-        // Simular una terminación normal
-        simulateNormalTermination();
-      });
-
-      programErrorButton.addEventListener('click', () => {
-        // Simular un error de programa
-        simulateProgramError();
-      });
-
-      quantumExpiredButton.addEventListener('click', () => {
-        // Simular la expiración de un quantum
-        simulateQuantumExpired();
-      });
-
-      zombieInterruptButton.addEventListener('click', () => {
-        // Simular una interrupción zombie
-        simulateZombieInterrupt();
-      });
-
-      abruptTerminationButton.addEventListener('click', () => {
-        // Simular una terminación abrupta
-        simulateAbruptTermination();
-      });
-    </script>
+    abruptTerminationButton.addEventListener('click', () => {
+      // Simular una terminación abrupta
+      simulateAbruptTermination();
+    });
+  </script>
 </body>
 
 </html>
