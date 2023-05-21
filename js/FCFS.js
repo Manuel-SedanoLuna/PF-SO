@@ -28,7 +28,7 @@ function schedule_fcfs(processes, n) {
       <th>Tiempo de espera</th>
     </tr>
   `;
-  
+
   let currentIndex = 0;
   const delay = 1000;
 
@@ -88,7 +88,6 @@ function schedule_fcfs(processes, n) {
   }
 
   processTable();
-
 }
 
 const processes = [
@@ -99,7 +98,5 @@ const processes = [
   { pid: 4, arrival_time: 4, burst_time: 5 },
 ];
 
-  const n = processes.length;
-  schedule_fcfs(processes, n);
-
-}
+const n = processes.length;
+schedule_fcfs(processes, n);
