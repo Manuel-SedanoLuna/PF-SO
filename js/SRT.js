@@ -63,20 +63,24 @@ function func_sort(procesos) {
     }
 }
 
-let n = document.getElementById('noProcesos').value
-
-for(let i=0; i<n; i++){
-    const pid = document.getElementById('pid').value;
-    const at = document.getElementById('at').value;
-    const bt = document.getElementById('bt').value;
+function executeSRT(){
     
-    const np = new ProcesoSRT(pid, at, bt);
-    procesos.push(np);
-}
+    let n = document.getElementById('noProcesos').value
+
+    for(let i=0; i<n; i++){
+        const pid = document.getElementById('pid').value;
+        const at = document.getElementById('at').value;
+        const bt = document.getElementById('bt').value;
+        
+        const np = new ProcesoSRT(pid, at, bt);
+        procesos.push(np);
+    }
 
 
-func_sort(procesos);
-console.log("PID\tArrival Time\tBurst Time\tWaiting Time\tTurnaround Time");
-for (let i = 0; i < procesos.length; i++) {
-    console.log(`${procesos[i].PID}\t\t${procesos[i].pid}\t\t${procesos[i].arrival_time}\t\t${procesos[i].burst_time}\t\t${procesos[i].waiting_time}\t\t${procesos[i].turnaround_time}`);
+    func_sort(procesos);
+    console.log("PID\tArrival Time\tBurst Time\tWaiting Time\tTurnaround Time");
+    for (let i = 0; i < procesos.length; i++) {
+        console.log(`${procesos[i].PID}\t\t${procesos[i].pid}\t\t${procesos[i].arrival_time}\t\t${procesos[i].burst_time}\t\t${procesos[i].waiting_time}\t\t${procesos[i].turnaround_time}`);
+    }
+
 }

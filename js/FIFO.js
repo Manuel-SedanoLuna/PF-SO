@@ -27,23 +27,17 @@ class Queue {
       }
     }
   }
-  
-  
 
 
-  // Programa principal
-  function main() {
+  function executeFIFO() {
     const queue = new Queue();
   
-    queue.enqueue(1);
-    queue.enqueue(2);
-    queue.enqueue(3);
-    queue.enqueue(8);
-    queue.enqueue(4);
-    queue.enqueue(6);
-  
+    for(let i=0; i<n; i++){
+        const p = document.getElementById('proceso').value;
+        queue.enqueue(p);
+    }
+    
     const elemento1 = queue.dequeue();
     const elemento2 = queue.dequeue();
   }
   
-  main();

@@ -32,6 +32,8 @@ class ProcesoMLFQ {
     }
   }
   
+function executeMLFQ(){
+
   const quantum = 2;
   const n = 5;
   let time = 0;
@@ -92,4 +94,5 @@ class ProcesoMLFQ {
     }
 
   }
+}
   

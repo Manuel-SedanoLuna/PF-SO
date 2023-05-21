@@ -99,5 +99,7 @@ const processes = [
   { pid: 4, arrival_time: 4, burst_time: 5 },
 ];
 
-const n = processes.length;
-schedule_fcfs(processes, n);
+  const n = processes.length;
+  schedule_fcfs(processes, n);
+
+}
