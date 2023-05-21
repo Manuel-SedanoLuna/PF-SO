@@ -187,7 +187,7 @@
 
 <body>
   <div class="container-fluid">
-    <br /><br /><br />
+    <br /><br />
     <div class="row">
       <div class="col-12">
         <div class="window-title-bar">
@@ -245,6 +245,11 @@
           <hr />
           <div class="algorithm" id="fcfs-algorithm">
             <h2>FCFS (First-Come, First-Served)</h2>
+            <div class="d-flex align-items-center">
+              <span class="mr-2">Tiempo transcurrido:</span>
+              <span id="timer">0</span>
+              <span>&nbsp;segundos</span>
+            </div>
             <pre id="fcfs-output"></pre>
           </div>
           <!-- Agregar botón para agregar un nuevo proceso -->
@@ -262,7 +267,31 @@
             <button type="button" class="btn btn-light sched" id="hrrn-button">HRRN</button>
             <button type="button" class="btn btn-light sched" id="mlfq-button">MLFQ</button>
           </div>
+          <!--Contador-->
+          <script>
+            // Contador (cronómetro)
+            var timerElement = document.getElementById('timer');
+            var seconds = 0;
+            var interval;
 
+            function startTimer() {
+              interval = setInterval(updateTimer, 1000);
+            }
+
+            function stopTimer() {
+              clearInterval(interval);
+            }
+
+            function updateTimer() {
+              seconds++;
+              timerElement.textContent = seconds;
+            }
+
+            // Iniciar el contador cuando se carga la página
+            document.addEventListener('DOMContentLoaded', function () {
+              startTimer();
+            });
+          </script>
           <!-- Agregar botones para los algoritmos de paginación -->
           <div class="d-flex justify-content-center align-items-center" style="margin-top: 20px">
             <p class="text-center">Algoritmo de Paginaci&oacute;n</p>
@@ -310,6 +339,19 @@
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+    <!--Codigo para cerrar menu desplegable si esta abierto-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      // Cierra los menús desplegables si están abiertos
+      $(document).on('click', function (e) {
+        $('.dropdown-menu').removeClass('show');
+      });
+
+      // Evita el cierre del menú si se hace clic dentro del menú mismo
+      $('.dropdown-toggle').on('click', function (e) {
+        e.stopPropagation();
+      });
+    </script>
     <!--Quitar opciones si se necesita-->
     <script>
       $(document).ready(function () {
