@@ -45,10 +45,14 @@ function schedule_fcfs(processes, n) {
   ).toFixed(2)}`;
 }
 
-const processes = [
-  { pid: 0, arrival_time: 0, waiting_time: 6 },
-  { pid: 1, arrival_time: 1, waiting_time: 2 },
-];
+function executeFCFS(){
+  
+  const processes = [
+    { pid: 0, arrival_time: 0, waiting_time: 6 },
+    { pid: 1, arrival_time: 1, waiting_time: 2 },
+  ];
 
-const n = processes.length;
-schedule_fcfs(processes, n);
+  const n = processes.length;
+  schedule_fcfs(processes, n);
+
+}
