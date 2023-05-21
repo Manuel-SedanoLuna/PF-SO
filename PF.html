@@ -62,22 +62,23 @@
             </button>
             <div class="dropdown-menu">
               <ul class="list-group">
-                <li class="list-group-item">Opción 1</li>
-                <li class="list-group-item">Opción 2</li>
-                <li class="list-group-item">Opción 3</li>
+                <li class="list-group-item">Creado por Manuel Sedano</li>
               </ul>
             </div>
           </div>
 
           <hr />
           <div class="algorithm" id="fcfs-algorithm">
-            <h2>FCFS (First-Come, First-Served)</h2>
+            <h2 id="algoritmo" class="algoritmo">FCFS (First-Come, First-Served)</h2>
             <div class="d-flex align-items-center">
               <span class="mr-2">Tiempo transcurrido:</span>
               <span id="timer">0</span>
               <span>&nbsp;segundos</span>
             </div>
-            <pre id="fcfs-output"></pre>
+            <div class="table-responsive">
+              <table class="table table-sm table-smaller table-striped table-bordered" id="fcfs-table" border="1">
+              </table>
+            </div>
           </div>
           <!-- Agregar botón para agregar un nuevo proceso -->
           <button id="add-process-btn" class="btn btn-primary">Agregar Proceso</button>

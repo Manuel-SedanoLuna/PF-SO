@@ -3,12 +3,10 @@ function schedule_fcfs(processes, n) {
   let completion_time = [];
   let turnaround_time = [];
   let waiting_time = [];
-  let total_turnaround_time = 0;
-  let total_waiting_time = 0;
 
   // Ordenar los procesos según el tiempo de llegada
   for (let i = 0; i < n - 1; i++) {
-    for (let j = 0; j < n - 1; j++) {
+    for (let j = 0; j < n - i - 1; j++) {
       if (processes[j].arrival_time > processes[j + 1].arrival_time) {
         let temp = processes[j];
         processes[j] = processes[j + 1];
@@ -17,37 +15,88 @@ function schedule_fcfs(processes, n) {
     }
   }
 
-  // Calcular el tiempo de completado, tiempo de espera y tiempo de retorno de cada proceso
-  for (let i = 0; i < n - 1; i++) {
-    if (current_time < processes[i].arrival_time) {
-      current_time = processes[i].arrival_time;
+  // Mostrar los resultados iniciales del algoritmo en la tabla
+  const tableElement = document.getElementById("fcfs-table");
+  tableElement.innerHTML = `
+    <tr>
+      <th>Seleccionar</th>
+      <th>Proceso</th>
+      <th>Tiempo de llegada</th>
+      <th>Tiempo de ráfaga</th>
+      <th>Tiempo completado</th>
+      <th>Tiempo de turnaround</th>
+      <th>Tiempo de espera</th>
+    </tr>
+  `;
+  
+  let currentIndex = 0;
+  const delay = 1000;
+
+  function processTable() {
+    if (currentIndex < n) {
+      setTimeout(() => {
+        const i = currentIndex;
+        tableElement.innerHTML += `
+        <tr>
+          <td><input type="checkbox" name="process" value="${processes[i].pid}"></td>
+          <td>${processes[i].pid}</td>
+          <td>${processes[i].arrival_time}</td>
+          <td>${processes[i].burst_time}</td>
+          <td id="completion-time-${processes[i].pid}"></td>
+          <td id="turnaround-time-${processes[i].pid}"></td>
+          <td id="waiting-time-${processes[i].pid}"></td>
+        </tr>
+      `;
+        currentIndex++;
+        processTable();
+      }, delay);
+    } else {
+      currentIndex = 0;
+      calculateValues();
     }
-    completion_time[i] = current_time + processes[i].waiting_time;
-    turnaround_time[i] = completion_time[i] - processes[i].arrival_time;
-    waiting_time[i] = turnaround_time[i] - processes[i].waiting_time;
-    current_time = completion_time[i];
-    total_turnaround_time += turnaround_time[i];
-    total_waiting_time += waiting_time[i];
   }
 
-  // Mostrar los resultados del algoritmo en la ventana
-  const outputElement = document.getElementById("fcfs-output");
-  outputElement.textContent =
-    "process\t tiempo-de-llegada\t tiempo-de-espera\t tiempo-completado\t tiempo-turnaround\t tiempo-de-espera\n";
-  for (let i = 0; i < n - 1; i++) {
-    outputElement.textContent += `${processes[i].pid}\t ${processes[i].arrival_time}\t ${processes[i].waiting_time}\t ${completion_time[i]}\t ${turnaround_time[i]}\t ${waiting_time[i]}\n`;
+  function calculateValues() {
+    if (currentIndex < n) {
+      setTimeout(() => {
+        const i = currentIndex;
+        if (current_time < processes[i].arrival_time) {
+          current_time = processes[i].arrival_time;
+        }
+        completion_time[i] = current_time + processes[i].burst_time;
+        turnaround_time[i] = completion_time[i] - processes[i].arrival_time;
+        waiting_time[i] = turnaround_time[i] - processes[i].burst_time;
+        current_time = completion_time[i];
+
+        const completionElement = document.getElementById(
+          `completion-time-${processes[i].pid}`
+        );
+        const turnaroundElement = document.getElementById(
+          `turnaround-time-${processes[i].pid}`
+        );
+        const waitingElement = document.getElementById(
+          `waiting-time-${processes[i].pid}`
+        );
+
+        completionElement.textContent = completion_time[i];
+        turnaroundElement.textContent = turnaround_time[i];
+        waitingElement.textContent = waiting_time[i];
+        currentIndex++;
+        calculateValues();
+      }, delay);
+    }
   }
-  outputElement.textContent += `Tiempo de retorno promedio: ${(
-    total_turnaround_time / n
-  ).toFixed(2)}\n`;
-  outputElement.textContent += `Tiempo de espera promedio: ${(
-    total_waiting_time / n
-  ).toFixed(2)}`;
+
+  processTable();
+
 }
 
 const processes = [
-  { pid: 0, arrival_time: 0, waiting_time: 6 },
-  { pid: 1, arrival_time: 1, waiting_time: 2 },
+  { pid: 0, arrival_time: 0, burst_time: 6 },
+  { pid: 1, arrival_time: 1, burst_time: 2 },
+  { pid: 2, arrival_time: 6, burst_time: 4 },
+  { pid: 3, arrival_time: 3, burst_time: 3 },
+  { pid: 4, arrival_time: 4, burst_time: 5 },
 ];
 
 const n = processes.length;

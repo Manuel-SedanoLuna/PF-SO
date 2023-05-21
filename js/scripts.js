@@ -15,6 +15,7 @@ $(document).ready(function () {
     target.toggleClass("show");
   });
 });
+
 //Reloj
 // Función para formatear números menores a 10 con un cero al inicio
 function formatNumber(number) {
@@ -53,6 +54,7 @@ $(document).ready(function () {
   updateClock();
   updateDate();
 });
+
 //Contador
 // Contador (cronómetro)
 var timerElement = document.getElementById("timer");
@@ -71,8 +73,48 @@ function updateTimer() {
   seconds++;
   timerElement.textContent = seconds;
 }
+function readNumberFromFile() {
+  // Ruta del archivo
+  var filePath = "files/tiempo-actual.txt";
 
+  // Lee el archivo mediante una solicitud AJAX
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", filePath, true);
+
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200) {
+        // Archivo encontrado, se lee el contenido
+        var number = parseInt(xhr.responseText);
+
+        if (isNaN(number)) {
+          // El contenido no es un número válido
+          console.error("El contenido del archivo no es un número válido");
+        } else {
+          // Se encontró un número válido en el archivo
+          seconds = number;
+          timerElement.textContent = seconds;
+        }
+      } else {
+        // El archivo no pudo ser encontrado
+        console.error("El archivo no se encuentra o no se puede acceder");
+      }
+    }
+
+    // Iniciar el contador en 0 segundos si el archivo no se encuentra o hay un error
+    if (xhr.status !== 200 || isNaN(number)) {
+      seconds = 0;
+      timerElement.textContent = seconds;
+    }
+  };
+
+  xhr.send();
+
+  // Iniciar el cronómetro después de verificar el archivo
+  startTimer();
+
+}
 // Iniciar el contador cuando se carga la página
 document.addEventListener("DOMContentLoaded", function () {
-  startTimer();
+  readNumberFromFile();
 });
