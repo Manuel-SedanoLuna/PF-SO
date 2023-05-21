@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
   <link rel="icon" href="windows_logo.png" type="image/png">
   <style>
     body {
@@ -138,27 +139,46 @@
       color: #fff;
       font-size: 12px;
     }
-    .interruptions, .schedulling{
+
+    .interruptions,
+    .schedulling,
+    .paginacion {
       display: flex;
       flex-wrap: wrap;
     }
-    .btn.btn-light.interruption-button{
+
+    .btn.btn-light.interruption-button {
       border-color: #000;
       border-style: solid;
       margin: 5px;
     }
-    .btn.btn-light.interruption-button:hover{
+
+    .btn.btn-light.interruption-button:hover {
       background-color: #000;
       color: #fff;
     }
-    .btn.btn-light.sched{
+
+    .btn.btn-light.sched {
       border-color: #008deb2d;
       border-style: solid;
       margin: 5px;
       background-color: #5200eb67;
     }
-    .btn.btn-light.sched:hover{
+
+    .btn.btn-light.sched:hover {
       background-color: rgb(51, 0, 85);
+      color: #fff;
+    }
+
+    .btn.btn-light.pag {
+      border-color: #0d694a9a;
+      border-style: solid;
+      margin: 5px;
+      background-color: #058d559f;
+    }
+
+    .btn.btn-light.pag:hover {
+      background-color: rgba(1, 32, 5, 0.74);
       color: #fff;
     }
   </style>
@@ -230,6 +250,9 @@
           <!-- Agregar botón para agregar un nuevo proceso -->
           <button id="add-process-btn" class="btn btn-primary">Agregar Proceso</button>
           <!-- Agregar botones para los algoritmos de scheduling -->
+          <div class="d-flex justify-content-center align-items-center" style="margin-top: 20px">
+            <p class="text-center">Algoritmos Schedulling</p>
+          </div>
           <div class="btn-group schedulling">
             <button type="button" class="btn btn-light sched" id="fcfs-button">FCFS</button>
             <button type="button" class="btn btn-light sched" id="fifo-button">FIFO</button>
@@ -240,14 +263,31 @@
             <button type="button" class="btn btn-light sched" id="mlfq-button">MLFQ</button>
           </div>
 
+          <!-- Agregar botones para los algoritmos de paginación -->
+          <div class="d-flex justify-content-center align-items-center" style="margin-top: 20px">
+            <p class="text-center">Algoritmo de Paginaci&oacute;n</p>
+          </div>
+
+          <div class="btn-group paginacion">
+            <button type="button" class="btn btn-light pag" id="lru-button">LRU</button>
+          </div>
+
           <!-- Agregar botones para las interrupciones -->
+          <div class="d-flex justify-content-center align-items-center" style="margin-top: 20px">
+            <p class="text-center">Tipo de interrupci&oacute;n</p>
+          </div>
           <div class="btn-group interruptions">
             <button type="button" class="btn btn-light interruption-button" id="io-interrupt-button">SVC I/O</button>
-            <button type="button" class="btn btn-light interruption-button" id="normal-termination-button">SVC Terminación</button>
-            <button type="button" class="btn btn-light interruption-button" id="program-error-button">Error de programa</button>
-            <button type="button" class="btn btn-light interruption-button" id="quantum-expired-button">Quantum expirado</button>
-            <button type="button" class="btn btn-light interruption-button" id="zombie-interrupt-button">Interrupción Zombie</button>
-            <button type="button" class="btn btn-light interruption-button" id="abrupt-termination-button">Terminación abrupta</button>
+            <button type="button" class="btn btn-light interruption-button" id="normal-termination-button">SVC
+              Terminación</button>
+            <button type="button" class="btn btn-light interruption-button" id="program-error-button">Error de
+              programa</button>
+            <button type="button" class="btn btn-light interruption-button" id="quantum-expired-button">Quantum
+              expirado</button>
+            <button type="button" class="btn btn-light interruption-button" id="zombie-interrupt-button">Interrupción
+              Zombie</button>
+            <button type="button" class="btn btn-light interruption-button" id="abrupt-termination-button">Terminación
+              abrupta</button>
           </div>
 
           <hr />
