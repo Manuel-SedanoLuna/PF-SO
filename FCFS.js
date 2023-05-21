@@ -39,14 +39,17 @@ function schedule_fcfs(processes, n) {
     console.log(`Tiempo de espera promedio: ${(total_waiting_time / n).toFixed(2)}`);
   }
   
-  const processes = [
-    { pid: 0, arrival_time: 0, waiting_time: 6 },
-    { pid: 1, arrival_time: 1, waiting_time: 2 },
-    { pid: 2, arrival_time: 2, waiting_time: 8 },
-    { pid: 3, arrival_time: 3, waiting_time: 3 },
-    { pid: 4, arrival_time: 4, waiting_time: 4 }
-  ];
-  
-  const n = 5;
-  schedule_fcfs(processes, n);
+
+  function executeFCFS(){
+    const processes = [
+      { pid: 0, arrival_time: 0, waiting_time: 6 },
+      { pid: 1, arrival_time: 1, waiting_time: 2 },
+      { pid: 2, arrival_time: 2, waiting_time: 8 },
+      { pid: 3, arrival_time: 3, waiting_time: 3 },
+      { pid: 4, arrival_time: 4, waiting_time: 4 }
+    ];
+    
+    const n = 5;
+    schedule_fcfs(processes, n);
+}
   
