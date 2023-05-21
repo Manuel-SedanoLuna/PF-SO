@@ -26,6 +26,8 @@ function schedule_fcfs(processes, n) {
       <th>Tiempo completado</th>
       <th>Tiempo de turnaround</th>
       <th>Tiempo de espera</th>
+      <th>STATUS</th>
+      <th>Tiempo en ejecuci&oacute;n</th>
     </tr>
   `;
 
@@ -45,6 +47,8 @@ function schedule_fcfs(processes, n) {
           <td id="completion-time-${processes[i].pid}"></td>
           <td id="turnaround-time-${processes[i].pid}"></td>
           <td id="waiting-time-${processes[i].pid}"></td>
+          <td>STATUS</td>
+          <td>Tiempo en ejecuci&oacute;n</td>
         </tr>
       `;
         currentIndex++;
