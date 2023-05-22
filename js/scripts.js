@@ -112,7 +112,6 @@ function readNumberFromFile() {
 
   // Iniciar el cronómetro después de verificar el archivo
   startTimer();
-
 }
 function returnNumberFromFile() {
   // Ruta del archivo

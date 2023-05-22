@@ -48,6 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
       <th>Tiempo en ejecuci&oacute;n</th>
     </tr>
   `;
+
       let currentIndex = 0;
       const delay = 1000;
 
@@ -107,6 +108,7 @@ document.addEventListener("DOMContentLoaded", function () {
               // Actualizar el estado del proceso
               if (executionTime <= processes[i].burst_time) {
                 statusElement.textContent = "Ejecutándose";
+                statusElement.style.backgroundColor = "rgba(22, 138, 6, 0.664)";
               } else {
                 statusElement.textContent = "Terminado";
               }
@@ -125,7 +127,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
               // Actualizar el estado del proceso como "Terminado"
               statusElement.textContent = "Terminado";
-
+              statusElement.style.backgroundColor = "rgba(255, 72, 0, 0.753)";
               currentIndex++;
               executeProcesses();
 
@@ -135,7 +137,7 @@ document.addEventListener("DOMContentLoaded", function () {
                   `process-row-${processes[i].pid}`
                 );
                 rowElement.parentNode.removeChild(rowElement);
-              }, 10000);
+              }, 15000);
             }
           }, delay);
         }
@@ -155,11 +157,8 @@ document.addEventListener("DOMContentLoaded", function () {
     function addProcess() {
       const maxProcesses = 5; // Número máximo de procesos permitidos
 
-      const tableElemen = document.getElementById("fcfs-table");
-      const rowCount = tableElemen.rows.length;
-
       // Verificar cantidad de procesos en ejecución o en espera
-      if ((rowCount - 1) >= maxProcesses) {
+      if (processes.length >= maxProcesses) {
         const messageElement = document.getElementById("message");
         messageElement.textContent = "Solo se permiten 5 procesos a la vez";
         return; // Salir de la función si se alcanza el límite de procesos
@@ -192,9 +191,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Actualizar la longitud n del arreglo
       n = processes.length;
-      
-      // Volver a llamar a la función schedule_fcfs() con el ultimo proceso
-      schedule_fcfs(processes[processes.length - 1], n);
+
+      // Volver a llamar a la función schedule_fcfs() con los procesos actualizados
+      schedule_fcfs(processes, n);
     }
   });
 });

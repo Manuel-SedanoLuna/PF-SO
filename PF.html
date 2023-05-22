@@ -150,110 +150,16 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="js/FCFS.js"></script>
   <!-- Incluir los archivos JavaScript para los demás algoritmos -->
-  <script src="js/FIFO.js"></script>
+  <!-- <script src="js/FIFO.js"></script>
   <script src="js/RoundRobin.js"></script>
   <script src="js/SJF.js"></script>
   <script src="js/SRT.js"></script>
   <script src="js/HRRN.js"></script>
 
   <script src="js/MLFQ.js"></script>
-  <script src="js/LRU.js"></script>
+  <script src="js/LRU.js"></script>-->
   <script src="js/Interruptions.js"></script>
   <script src="js/scripts.js"></script>
-  <script>
-    // Obtener referencia a los botones de algoritmos de scheduling
-    const fcfsButton = document.getElementById('fcfs-button');
-    const fifoButton = document.getElementById('fifo-button');
-    const roundRobinButton = document.getElementById('round-robin-button');
-    const sjfButton = document.getElementById('sjf-button');
-    const srtButton = document.getElementById('srt-button');
-    const hrrnButton = document.getElementById('hrrn-button');
-    const mlfqButton = document.getElementById('mlfq-button');
-
-    // Obtener referencia al botón de algoritmo de paginación
-    const lruButton = document.getElementById('lru-button');
-
-    // Obtener referencia a los botones de interrupciones
-    const ioInterruptButton = document.getElementById('io-interrupt-button');
-    const normalTerminationButton = document.getElementById('normal-termination-button');
-    const programErrorButton = document.getElementById('program-error-button');
-    const quantumExpiredButton = document.getElementById('quantum-expired-button');
-    const zombieInterruptButton = document.getElementById('zombie-interrupt-button');
-    const abruptTerminationButton = document.getElementById('abrupt-termination-button');
-
-    // Asociar eventos de clic a los botones de algoritmos de scheduling
-    fcfsButton.addEventListener('click', () => {
-      // Ejecutar el algoritmo FCFS
-      executeFCFS();
-    });
-
-    fifoButton.addEventListener('click', () => {
-      // Ejecutar el algoritmo FIFO
-      executeFIFO();
-    });
-
-    roundRobinButton.addEventListener('click', () => {
-      // Ejecutar el algoritmo Round Robin
-      executeRoundRobin();
-    });
-
-    sjfButton.addEventListener('click', () => {
-      // Ejecutar el algoritmo SJF
-      executeSJF();
-    });
-
-    srtButton.addEventListener('click', () => {
-      // Ejecutar el algoritmo SRT
-      executeSRT();
-    });
-
-    hrrnButton.addEventListener('click', () => {
-      // Ejecutar el algoritmo HRRN
-      executeHRRN();
-    });
-
-    mlfqButton.addEventListener('click', () => {
-      // Ejecutar el algoritmo MLFQ
-      executeMLFQ();
-    });
-
-    // Asociar evento de clic al botón de algoritmo de paginación
-    lruButton.addEventListener('click', () => {
-      // Ejecutar el algoritmo LRU
-      executeLRU();
-    });
-
-    // Asociar eventos de clic a los botones de interrupciones
-    ioInterruptButton.addEventListener('click', () => {
-      // Simular una interrupción de E/S
-      simulateIOInterrupt();
-    });
-
-    normalTerminationButton.addEventListener('click', () => {
-      // Simular una terminación normal
-      simulateNormalTermination();
-    });
-
-    programErrorButton.addEventListener('click', () => {
-      // Simular un error de programa
-      simulateProgramError();
-    });
-
-    quantumExpiredButton.addEventListener('click', () => {
-      // Simular la expiración de un quantum
-      simulateQuantumExpired();
-    });
-
-    zombieInterruptButton.addEventListener('click', () => {
-      // Simular una interrupción zombie
-      simulateZombieInterrupt();
-    });
-
-    abruptTerminationButton.addEventListener('click', () => {
-      // Simular una terminación abrupta
-      simulateAbruptTermination();
-    });
-  </script>
 </body>
 
 </html>
