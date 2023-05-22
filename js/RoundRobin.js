@@ -90,6 +90,10 @@ function executeRoundRobin(){
         }
       }
 
+      const h2Element = document.getElementById('algoritmo');
+
+        h2Element.innerHTML = 'Round Robin';
+
     //Creacion del arreglo de objetos simulando una estructura de datos.
     const procesos = [
         new ProcesoRobin(1, 1, 4),
