@@ -114,6 +114,43 @@ function readNumberFromFile() {
   startTimer();
 
 }
+function returnNumberFromFile() {
+  // Ruta del archivo
+  var filePath = "files/tiempo-actual.txt";
+
+  // Crea una promesa para manejar la lectura del archivo
+  return new Promise(function (resolve, reject) {
+    // Lee el archivo mediante una solicitud AJAX
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", filePath, true);
+
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          // Archivo encontrado, se lee el contenido
+          var number = parseInt(xhr.responseText);
+
+          if (isNaN(number)) {
+            // El contenido no es un número válido
+            reject("El contenido del archivo no es un número válido");
+          } else {
+            // Se encontró un número válido en el archivo
+            resolve(number);
+          }
+        } else {
+          // El archivo no pudo ser encontrado
+          reject("El archivo no se encuentra o no se puede acceder");
+        }
+      }
+    };
+
+    xhr.send();
+  }).catch(function (error) {
+    console.error(error);
+    return 0; // Retorna 0 en caso de error
+  });
+}
+
 // Iniciar el contador cuando se carga la página
 document.addEventListener("DOMContentLoaded", function () {
   readNumberFromFile();
