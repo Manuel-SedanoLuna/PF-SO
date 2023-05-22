@@ -1,0 +1,25 @@
+Especificaciones para ejecutar el sistema operativo "Winux" en una computadora:
+
+Requisitos mínimos:
+-Un navegador web actualizado (recomendado: Google Chrome, Mozilla Firefox, Microsoft Edge)
+-Conexión a Internet
+
+Pasos para ejecutar el sistema:
+-Buscar el archivo "index.html".
+-Hacer doble clic en el archivo "index.html" para abrirlo en tu navegador web predeterminado.
+
+Contraseña de inicio de sesión:
+-Durante el proceso de inicio de sesión, se te solicitará ingresar una contraseña.
+-La contraseña predeterminada para acceder al sistema es "666" (sin comillas).
+-Para cambiar la contraseña, puedes editar el archivo "Index-scripts.js" y modificar la variable correspondiente.
+
+Interfaz principal del sistema:
+-Una vez que ingreses la contraseña correcta, serás redirigido a la página principal del sistema operativo "Winux" (archivo "PF.html").
+-En esta página, encontrarás una barra de título con controles de ventana y un contenido principal con diferentes opciones de menú, algoritmos de scheduling, algoritmo de paginación y tipos de interrupciones.
+-Puedes explorar y utilizar las diferentes funcionalidades haciendo clic en los botones y opciones disponibles.
+
+Notas importantes:
+-El sistema operativo "Winux" se ha desarrollado utilizando tecnologías web (HTML, CSS y JavaScript), por lo que no requiere instalación adicional.
+-El sistema operativo se ejecuta en tu navegador web, por lo que debes tener una conexión a Internet estable para acceder a las funcionalidades completas y actualizar la fecha y hora en la barra de tareas.
+-Ten en cuenta que esta versión del sistema operativo puede tener limitaciones en cuanto a su funcionalidad y compatibilidad con ciertos dispositivos o navegadores web. Asegúrate de utilizar un navegador actualizado para obtener la mejor experiencia posible.
+-Estas son las especificaciones y los pasos necesarios para ejecutar el sistema operativo "Winux" en una computadora. Recuerda que estos detalles están basados en la información proporcionada en el desarrollo del proyecto.
