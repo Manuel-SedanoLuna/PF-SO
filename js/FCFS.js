@@ -144,6 +144,10 @@ document.addEventListener("DOMContentLoaded", function () {
       processTable();
     }
 
+    const h2Element = document.getElementById('algoritmo');
+
+    h2Element.innerHTML = 'First Come, First Serve';
+
     schedule_fcfs(processes, n);
 
     // Obtener referencia al botón "Agregar Proceso"
