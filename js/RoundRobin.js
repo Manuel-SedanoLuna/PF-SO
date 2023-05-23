@@ -14,7 +14,7 @@ class ProcesoRobin {
 
 }
 
-function executeRoundRobin(){
+function executeRoundRobin(current_time){
 
     // Mostrar los resultados iniciales del algoritmo en la tabla
     const tableElement = document.getElementById("fcfs-table");
@@ -25,6 +25,8 @@ function executeRoundRobin(){
         <th>Tiempo de llegada</th>
         <th>Tiempo de ráfaga</th>
         <th>Tiempo restante</th>
+        <th>STATUS</th>
+        <th>Tiempo en ejecucion</th>
       </tr>
     `;
 
@@ -42,6 +44,8 @@ function executeRoundRobin(){
               <td>${procesos[i].tiempo_llegada}</td>
               <td>${procesos[i].tiempo_ejecucion}</td>
               <td id="remaining-time-${procesos[i].id}"></td>
+              <td id="status-${procesos[i].id}"></td>
+              <td id="execution-time-${procesos[i].id}"></td>
             </tr>
           `;
             currentIndex++;
@@ -55,39 +59,87 @@ function executeRoundRobin(){
 
       function calculateValues() {
         if (currentIndex < n) {
-          setTimeout(() => {
+          
+            setTimeout(() => {
             
-            const i = currentIndex;
+                const i = currentIndex;
 
-            if(procesos[i].tiempo_ejecucion > 0){
-                if(procesos[i].tiempo_ejecucion <= quantum){
-                    tiempo_actual += procesos[i].tiempo_ejecucion;
-                    tiempo_total -= procesos[i].tiempo_ejecucion;
-                    procesos[i].tiempo_ejecucion = 0;
-                } else {
-                    tiempo_actual += quantum;
-                    tiempo_total -= quantum;
-                    procesos[i].tiempo_ejecucion -= quantum;
-                }
-            }
-
-            procesos[i].tiempo_restante = procesos[i].tiempo_ejecucion;
+                const remainingElement = document.getElementById(
+                  `remaining-time-${procesos[i].id}`
+                );
+                
+                const statusElement = document.getElementById(
+                  `status-${procesos[i].id}`
+                );
         
-            const remainingElement = document.getElementById(
-              `remaining-time-${procesos[i].id}`
-            );
+                let executionTime = 0;
+                const executionElement = document.getElementById(
+                  `execution-time-${procesos[i].id}`
+                );
 
-            /*const completionElement = document.getElementById(
-              `completion-time-${procesos[i].id}`
-            );*/
-    
-            remainingElement.textContent = procesos[i].tiempo_restante;
-            //completionElement.textContent = elemento.tiempo_turnaround;
-            
-            currentIndex++;
-            calculateValues();
-          }, delay);
-        }
+                const intervalId = setInterval(() => {
+                  if(executionTime <= quantum && executionTime <= procesos[i].tiempo_ejecucion){
+                      executionElement.textContent = executionTime + " segundos"; 
+                      executionTime++;
+
+                      //Actualizar el estado del proceso
+                      if(executionTime <= procesos[i].tiempo_ejecucion){
+                        statusElement.textContent = "Ejecutándose";
+                        statusElement.style.backgroundColor = "rgba(22, 138, 6, 0.664)";
+                      } else {
+                        statusElement.textContent = "Terminado";
+                      }
+                  } else {
+                      clearInterval(intervalId);
+                      if(procesos[i].tiempo_ejecucion > 0){
+                        if(procesos[i].tiempo_ejecucion <= quantum){
+                            current_time += procesos[i].tiempo_ejecucion;
+                            tiempo_total -= procesos[i].tiempo_ejecucion;
+                            procesos[i].tiempo_ejecucion = 0;
+                        } else {
+                            current_time += quantum;
+                            tiempo_total -= quantum;
+                            procesos[i].tiempo_ejecucion -= quantum;
+                        }
+                      }
+        
+                      procesos[i].tiempo_restante = procesos[i].tiempo_ejecucion; 
+
+                      remainingElement.textContent = procesos[i].tiempo_restante;
+                      if(procesos[i].tiempo_restante > 0){
+                        statusElement.textContent = "En espera";
+                      } else {
+                        statusElement.textContent = "Terminado";
+                        statusElement.style.backgroundColor = "rgba(255, 72, 0, 0.753)";
+                      }
+
+                      if(currentIndex == (n-1)){ 
+                
+                          for(let j=0; j<n; j++){
+                              if(procesos[i].tiempo_restante > 0){
+                                  currentIndex = -1;
+                              }
+                          }
+                  
+                      }
+
+                      currentIndex++;
+                      calculateValues();
+
+                    }
+
+                  }, delay)
+
+                }, delay);
+
+              /*const completionElement = document.getElementById(
+                `completion-time-${procesos[i].id}`
+              );*/
+      
+              //remainingElement.textContent = procesos[i].tiempo_restante;
+              //completionElement.textContent = elemento.tiempo_turnaround;
+          
+            };
       }
 
       const h2Element = document.getElementById('algoritmo');
@@ -96,12 +148,14 @@ function executeRoundRobin(){
 
     //Creacion del arreglo de objetos simulando una estructura de datos.
     const procesos = [
-        new ProcesoRobin(1, 1, 4),
-        new ProcesoRobin(2, 3, 8),
-        new ProcesoRobin(3, 5, 5),
-        new ProcesoRobin(4, 7, 7),
-        new ProcesoRobin(6, 8, 8)
+        new ProcesoRobin(1, current_time + 1, 4),
+        new ProcesoRobin(2, current_time + 3, 8),
+        new ProcesoRobin(3, current_time + 5, 5),
+        new ProcesoRobin(4, current_time + 7, 7),
+        new ProcesoRobin(6, current_time + 8, 8)
     ];
+
+    f = true;
 
     let n = procesos.length;   
     
@@ -112,6 +166,11 @@ function executeRoundRobin(){
 
 }
 
-executeRoundRobin();
+document.addEventListener("DOMContentLoaded", function() {
+  returnNumberFromFile().then(function (current_time) {
+    executeRoundRobin(current_time);
+  })
+})
+
            
 
