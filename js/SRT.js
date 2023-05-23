@@ -67,20 +67,77 @@ function executeSRT(){
     
     let n = document.getElementById('noProcesos').value
 
-    for(let i=0; i<n; i++){
-        const pid = document.getElementById('pid').value;
-        const at = document.getElementById('at').value;
-        const bt = document.getElementById('bt').value;
-        
-        const np = new ProcesoSRT(pid, at, bt);
-        procesos.push(np);
-    }
+// Mostrar los resultados iniciales del algoritmo en la tabla
+const tableElement = document.getElementById("fcfs-table");
+tableElement.innerHTML = `
+  <tr>
+    <th>Seleccionar</th>
+    <th>Proceso</th>
+    <th>Tiempo de llegada</th>
+    <th>Tiempo de ráfaga</th>
+    <th>Tiempo completado</th>
+    <th>Tiempo de turnaround</th>
+    <th>Tiempo de espera</th>
+  </tr>
+`;
 
+let currentIndex = 0;
+const delay = 1000;
 
-    func_sort(procesos);
-    console.log("PID\tArrival Time\tBurst Time\tWaiting Time\tTurnaround Time");
-    for (let i = 0; i < procesos.length; i++) {
-        console.log(`${procesos[i].PID}\t\t${procesos[i].pid}\t\t${procesos[i].arrival_time}\t\t${procesos[i].burst_time}\t\t${procesos[i].waiting_time}\t\t${procesos[i].turnaround_time}`);
-    }
-
+function processTable() {
+  if (currentIndex < n) {
+    setTimeout(() => {
+      const i = currentIndex;
+      const elemento = queue.dequeue();
+      tableElement.innerHTML += `
+      <tr>
+        <td><input type="checkbox" name="process" value="${elemento.id}"></td>
+        <td>${elemento.id}</td>
+        <td>${elemento.tiempo_llegada}</td>
+        <td>${elemento.tiempo_burst}</td>
+        <td id="completion-time-${elemento.id}"></td>
+        <td id="turnaround-time-${elemento.id}"></td>
+        <td id="waiting-time-${elemento.id}"></td>
+      </tr>
+    `;
+      currentIndex++;
+      queue.enqueue(elemento);
+      processTable();
+    }, delay);
+  } else {
+    currentIndex = 0;
+    calculateValues();
+  }
 }
+
+function calculateValues() {
+  if (currentIndex < n) {
+    setTimeout(() => {
+      
+        for(let i=0; i<n; i++){
+            const pid = document.getElementById('pid').value;
+            const at = document.getElementById('at').value;
+            const bt = document.getElementById('bt').value;
+            
+            const np = new ProcesoSRT(pid, at, bt);
+            procesos.push(np);
+        }
+    
+    
+        func_sort(procesos);
+        console.log("PID\tArrival Time\tBurst Time\tWaiting Time\tTurnaround Time");
+        for (let i = 0; i < procesos.length; i++) {
+            console.log(`${procesos[i].PID}\t\t${procesos[i].pid}\t\t${procesos[i].arrival_time}\t\t${procesos[i].burst_time}\t\t${procesos[i].waiting_time}\t\t${procesos[i].turnaround_time}`);
+        }
+      currentIndex++;
+      calculateValues();
+    }, delay);
+  }
+}
+const h2Element = document.getElementById('algoritmo');
+
+h2Element.innerHTML = 'First In, First Out';
+
+processTable();
+}
+executeSRT();
