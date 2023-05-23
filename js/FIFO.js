@@ -122,12 +122,12 @@ function executeFIFO(current_time) {
         );
 
         const intervalId = setInterval(() => {
-           if(executionTime <= elemento.burst_time) {
+           if(executionTime <= elemento.tiempo_burst) {
               executionElement.textContent = executionTime + " segundos";
               executionTime++;
 
               //Actualizar el estado del proceso
-              if(executionTime <= proceses[i].burst_time){
+              if(executionTime <= elemento.tiempo_burst){
                 statusElement.textContent = "Ejecutándose";
                 statusElement.style.backgroundColor = "rgba(22, 138, 6, 0.664)";
               } else {
@@ -150,7 +150,7 @@ function executeFIFO(current_time) {
 
               //Actualizar el estado del proceso como terminado
               statusElement.textContent = "Terminado";
-              executionElement.textContent = `${elemento.tiempo_burst} segundos`;
+              //executionElement.textContent = `${elemento.tiempo_burst} segundos`;
               statusElement.style.backgroundColor = "rgba(255, 72, 0, 0.753)";
               currentIndex++;
               calculateValues();
